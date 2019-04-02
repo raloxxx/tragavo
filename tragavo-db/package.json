@@ -1,0 +1,28 @@
+{
+  "name": "tragavo-db",
+  "version": "1.0.0",
+  "description": "Plataform tragavo - DB",
+  "main": "index.js",
+  "scripts": {
+    "test": "SET DEBUG=tragavo:* && nyc --reporter=lcov ava tests/*.js --verbose",
+    "lint": "standard"
+  },
+  "author": "Denis Ricardo Vilcas Villalba",
+  "license": "ISC",
+  "devDependencies": {
+    "@turf/turf": "^5.1.6",
+    "ava": "^1.2.1",
+    "nyc": "^13.3.0",
+    "proxyquire": "^2.1.0",
+    "sinon": "^7.2.3",
+    "standard": "^12.0.1"
+  },
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "debug": "^4.1.1",
+    "defaults": "^1.0.3",
+    "inquirer": "^6.2.2",
+    "minimist": "^1.2.0",
+    "mongoose": "^5.4.13"
+  }
+}
