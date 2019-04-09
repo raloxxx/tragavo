@@ -55,5 +55,4 @@ module.exports = function (RestaurantModel) {
 }
 
 // metodos a implementar
-// -> findAll
 // -> findByQualification
