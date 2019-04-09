@@ -1,9 +1,9 @@
 'use strict'
 
 const setupDatabase = require('./lib/db')
-const setupTidingsModel = require('./models/tiding')
+const setupEventsModel = require('./models/event')
 const setupRestaurantModel = require('./models/restaurant')
-const setupTidings = require('./lib/tiding')
+const setupEvents = require('./lib/event')
 const setupRestaurant = require('./lib/restaurant')
 const defaults = require('defaults')
 
@@ -24,18 +24,18 @@ module.exports = async function (uri, config) {
   })
 
   const mongoose = await setupDatabase(uri, config)
-  const TidingsModel = await setupTidingsModel(uri, config)
+  const EventsModel = await setupEventsModel(uri, config)
   const RestaurantModel = await setupRestaurantModel(uri, config)
 
   if (config.setup) {
     await mongoose.connection.db.dropDatabase() // eliminamos la base de datos :( :( :(
   }
 
-  const Tiding = setupTidings(TidingsModel)
+  const Event = setupEvents(EventsModel)
   const Restaurant = setupRestaurant(RestaurantModel)
 
   return {
-    Tiding,
+    Event,
     Restaurant
   }
 }

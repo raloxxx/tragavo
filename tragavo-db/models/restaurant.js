@@ -7,11 +7,23 @@ module.exports = async function setupRestaurantModel (uri, config) {
   const mongoose = await setupDatabase(uri, config)
 
   let restaurantSchema = Mongoose.Schema({
-    uuid: String,
     name: String,
-    addres: String,
-    hostname: String,
-    connected: Boolean
+    email: String,
+    phones: [],
+    address: String,
+    country: String,
+    city: String,
+    categories: {
+      type: [String]
+    },
+    url: String,
+    opinions: [],
+    horary: { start: String, end: String },
+    contact: String,
+    branchOffices: [],
+    qualification: [],
+    createdAt: { type: Date, default: Date.now },
+    updateAt: { type: Date, default: Date.now }
   })
 
   return mongoose.model('restaurant', restaurantSchema)

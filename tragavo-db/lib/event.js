@@ -57,15 +57,19 @@ module.exports = function (TidingsModel) {
     })
   }
 
+  function findByCalendar (dates) {
+    return TidingsModel.find({
+      calendar: { $elemMatch: { date: { $in: dates } } }
+    })
+  }
+
   return {
     createOrUpdate,
     findById,
     findAll,
     findByAuthorUuid,
     findByLocation,
-    findByTags
+    findByTags,
+    findByCalendar
   }
 }
-
-// Metodos a implementar
-// findByFeatured () {}

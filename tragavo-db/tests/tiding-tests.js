@@ -16,7 +16,7 @@ let single = Object.assign({}, tidingFixtures.single)
 let _id = '5ca0fcc3eb242703246fc1af9'
 let uuidAuthor = 'abc-abc-abc'
 let coordinates = [-12.575595, -69.199120]
-let distance = 62 //en millas
+let distance = 62 // en millas
 
 let tags = ['menu', 'bebida']
 let _idArgs = {
@@ -40,7 +40,7 @@ let byLocationArgs = {
   }
 }
 let byTagsArgs = {
-    tags: { $in: tags}
+  tags: { $in: tags }
 }
 
 let newTiding = {
@@ -174,15 +174,14 @@ test.serial('Tiding#findByLocation', async t => {
 })
 
 test.serial('Tiding#findByTags', async t => {
-    let tidings = await db.Tiding.findByTags(tags)
+  let tidings = await db.Tiding.findByTags(tags)
 
-    t.true(TidingStub.find.called, 'find debe ser llamado en el modelo')
-    t.true(TidingStub.find.calledOnce, 'find debe llamarse 1 vez')
-    t.true(TidingStub.find.calledWith(byTagsArgs), 'find debe llamarse con el argumento byLocationArgs')
-  
-    t.deepEqual(tidings, tidingFixtures.byTags(tags), 'los tidings debe ser el mismo')
+  t.true(TidingStub.find.called, 'find debe ser llamado en el modelo')
+  t.true(TidingStub.find.calledOnce, 'find debe llamarse 1 vez')
+  t.true(TidingStub.find.calledWith(byTagsArgs), 'find debe llamarse con el argumento byLocationArgs')
+
+  t.deepEqual(tidings, tidingFixtures.byTags(tags), 'los tidings debe ser el mismo')
 })
-
 
 // Implementar las siguientes pruebas
 

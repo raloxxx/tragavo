@@ -6,6 +6,12 @@ const setupDatabase = require('../lib/db')
 module.exports = async function setupNewsModel (uri, config) {
   const mongoose = await setupDatabase(uri, config)
 
+  const calendarSchema = new Mongoose.Schema({
+    date: { type: Date },
+    start: Number,
+    end: Number
+  })
+
   const tidingsSchema = new Mongoose.Schema({
     title: String,
     description: String,
@@ -26,7 +32,9 @@ module.exports = async function setupNewsModel (uri, config) {
         required: true
       }
     },
+    calendar: [calendarSchema],
     createdAt: { type: Date, default: Date.now },
+    updateAt: { type: Date, default: Date.now },
     comments: [{ body: String, date: Date }],
     tags: {
       type: [String]
@@ -35,5 +43,5 @@ module.exports = async function setupNewsModel (uri, config) {
 
   tidingsSchema.index({ location: '2dsphere' })// index para autorizar busqueda geolocalizacion
 
-  return mongoose.model('tidings', tidingsSchema)
+  return mongoose.model('events', tidingsSchema)
 }

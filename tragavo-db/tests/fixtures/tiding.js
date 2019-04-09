@@ -33,7 +33,7 @@ module.exports = {
   }),
   byId: id => tidings.filter(a => a._id === id).shift(),
   byAuthorUuid: uuid => tidings.filter(a => a.authorId === uuid),
-  byTags: tags => tidings.filter( a => a.tags.includes( tags[1] ) ),//falta modificar
+  byTags: tags => tidings.filter(a => a.tags.includes(tags[1])), // falta modificar
   byLocation: (coordinates, distance) => tidings
     .filter(a => Math.round(turf.distance(turf.point(coordinates), turf.point(a.location.coordinates), { units: 'miles' })) <= distance)
     .sort((a, b) => turf.distance(turf.point(coordinates), turf.point(a.location.coordinates), { units: 'miles' }) - turf.distance(turf.point(coordinates), turf.point(b.location.coordinates), { units: 'miles' }))
